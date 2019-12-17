@@ -5,32 +5,32 @@ import java.nio.charset.StandardCharsets;
 
 class Thingy {
 
-    private int foo;
-    private int bar;
-    private int foobar = new int[]{0, 0, 0, 0, 0}.length;
+    private int counterTo100;
+    private int fizzCounter;
+    private int buzzCounter = new int[]{0, 0, 0, 0, 0}.length; //5
 
-    String doTheThing() {
-        String s = "";
-        for (; foo < Byte.MAX_VALUE - 27; foo++) s += b(foo) + " ";
-        return s.substring(0, s.length() - 1);
+    String fizzBuzz() {
+        String output = "";
+        for (; counterTo100 < Byte.MAX_VALUE - 27; counterTo100++) output += calculateFizzBuzzForDigit(counterTo100) + " ";
+        return output.substring(0, output.length() - 1);
     }
 
-    private String b(int foo) {
-        bar++;
-        foobar--;
-        String s = bar == 0b11 || foobar == 0 ? "" : String.valueOf(foo + 1);
-        if (bar == 0b11) s += bar();
-        if (foobar == 0) s += foo();
+    private String calculateFizzBuzzForDigit(int counterTo100) {
+        fizzCounter++;
+        buzzCounter--;
+        String s = fizzCounter == 0b11 || buzzCounter == 0 ? "" : String.valueOf(counterTo100 + 1); // if bar == 3 or 5, s = number
+        if (fizzCounter == 0b11) s += resetFizzCounterReturnFizz();
+        if (buzzCounter == 0) s += resetBuzzCounterReturnBuzz();
         return s;
     }
 
-    private String foo() {
-        foobar = new int[]{0, 0, 0, 0, 0}.length;
+    private String resetBuzzCounterReturnBuzz() {
+        buzzCounter = new int[]{0, 0, 0, 0, 0}.length; // 5
         return new String(DatatypeConverter.parseHexBinary("42757a7a"), StandardCharsets.UTF_8);
     }
 
-    private String bar() {
-        bar = 0;
+    private String resetFizzCounterReturnFizz() {
+        fizzCounter = 0;
         return new String(DatatypeConverter.parseHexBinary("46697a7a"), StandardCharsets.UTF_8);
     }
 }
