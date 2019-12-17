@@ -5,32 +5,37 @@ import java.nio.charset.StandardCharsets;
 
 class Thingy {
 
-    private int counterTo100;
-    private int fizzCounter;
-    private int buzzCounter = new int[]{0, 0, 0, 0, 0}.length; //5
+    private int fizzCountup;
+    private int buzzCountdown = new int[]{0, 0, 0, 0, 0}.length;
 
     String fizzBuzz() {
-        String output = "";
-        for (; counterTo100 < Byte.MAX_VALUE - 27; counterTo100++) output += calculateFizzBuzzForDigit(counterTo100) + " ";
-        return output.substring(0, output.length() - 1);
+        String fizzBuzzBuilder = "";
+        int fizzBuzzLimit = Byte.MAX_VALUE - 27;
+        for (int currentDigit = 0; currentDigit < fizzBuzzLimit; currentDigit++) fizzBuzzBuilder += convertDigitToFizzBuzz(currentDigit) + " ";
+        String fizzBuzzOutput = fizzBuzzBuilder.substring(0, fizzBuzzBuilder.length() - 1);
+        return fizzBuzzOutput;
     }
 
-    private String calculateFizzBuzzForDigit(int counterTo100) {
-        fizzCounter++;
-        buzzCounter--;
-        String s = fizzCounter == 0b11 || buzzCounter == 0 ? "" : String.valueOf(counterTo100 + 1); // if bar == 3 or 5, s = number
-        if (fizzCounter == 0b11) s += resetFizzCounterReturnFizz();
-        if (buzzCounter == 0) s += resetBuzzCounterReturnBuzz();
-        return s;
+    private String convertDigitToFizzBuzz(int counterTo100) {
+        fizzCountup++;
+        buzzCountdown--;
+        int three = 0b11;
+        String resultValue = fizzCountup == three || buzzCountdown == 0 ? "" : String.valueOf(counterTo100 + 1);
+        if (fizzCountup == three) resultValue += resetFizzCounterReturnFizz();
+        if (buzzCountdown == 0) resultValue += resetBuzzCounterReturnBuzz();
+        return resultValue;
     }
 
     private String resetBuzzCounterReturnBuzz() {
-        buzzCounter = new int[]{0, 0, 0, 0, 0}.length; // 5
-        return new String(DatatypeConverter.parseHexBinary("42757a7a"), StandardCharsets.UTF_8);
+        int five = new int[]{0, 0, 0, 0, 0}.length;
+        buzzCountdown = five;
+        String buzzString = new String(DatatypeConverter.parseHexBinary("42757a7a"), StandardCharsets.UTF_8);
+        return buzzString;
     }
 
     private String resetFizzCounterReturnFizz() {
-        fizzCounter = 0;
-        return new String(DatatypeConverter.parseHexBinary("46697a7a"), StandardCharsets.UTF_8);
+        fizzCountup = 0;
+        String fizzString = new String(DatatypeConverter.parseHexBinary("46697a7a"), StandardCharsets.UTF_8);
+        return fizzString;
     }
 }
