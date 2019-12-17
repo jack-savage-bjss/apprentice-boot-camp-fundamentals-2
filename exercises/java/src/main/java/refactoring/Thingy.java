@@ -21,8 +21,10 @@ class Thingy {
         buzzCountdown--;
         int three = 0b11;
         String resultValue = fizzCountup == three || buzzCountdown == 0 ? "" : String.valueOf(counterTo100 + 1);
-        if (fizzCountup == three) resultValue += resetFizzCounterReturnFizz();
-        if (buzzCountdown == 0) resultValue += resetBuzzCounterReturnBuzz();
+        boolean isFizzCountupThree = fizzCountup == three;
+        boolean isBuzzCountdownZero = buzzCountdown == 0;
+        if (isFizzCountupThree) resultValue += resetFizzCounterReturnFizz();
+        if (isBuzzCountdownZero) resultValue += resetBuzzCounterReturnBuzz();
         return resultValue;
     }
 
