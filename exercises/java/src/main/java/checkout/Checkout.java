@@ -1,10 +1,18 @@
 package checkout;
 
+import java.util.ArrayList;
+import java.util.List;
+
 class Checkout {
     private int total;
     private int numberOfA = 0;
     private int numberOfB = 0;
+    public List<Offer> currentOffers = new ArrayList<>();
     private Receipt receipt = new Receipt();
+
+    {
+        currentOffers.add(new Offer(5,30));
+    }
 
     void scan(String sku) {
         if ("A".equals(sku)) {

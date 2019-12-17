@@ -14,6 +14,7 @@ class Receipt {
     void scannedA() {
         text += "A: 50";
         if (++numberOfA % 5 == 0) {
+            total += 30;
             text += " - 30 (5 for 220)";
         }
         else {
