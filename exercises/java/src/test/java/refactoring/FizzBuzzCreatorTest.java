@@ -7,11 +7,11 @@ import java.nio.charset.StandardCharsets;
 
 import static org.assertj.core.api.Assertions.*;
 
-public class ThingyTest {
+public class FizzBuzzCreatorTest {
 
     @Test
     public void itWorks() {
-        assertThat(new Thingy().fizzBuzz().equals(new String(
+        assertThat(new FizzBuzzCreator().fizzBuzz().equals(new String(
                 DatatypeConverter.parseHexBinary(
                         "3120322046697a7a20342042757a7a2046697a7a203720382046697a7a2042757a7a203131" +
                                 "2046697a7a2031332031342046697a7a42757a7a2031362031372046697a7a2031392042757a7a204669" +
