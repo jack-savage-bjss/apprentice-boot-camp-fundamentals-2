@@ -35,5 +35,4 @@ public class BowlingTest {
 
         assertThat(game.score(rolls)).isEqualTo(29);
     }
-    
 }
